@@ -11,7 +11,7 @@
 </head>
     <body>
         <?php 
-            include "Header.php";
+            include "includes/Header.php";
         ?>
 
 <div class="pravila">
@@ -346,7 +346,7 @@
 
 
         <?php 
-            include "Footer.php";
+            include "includes/Footer.php";
         ?>
     </body>
 </html>

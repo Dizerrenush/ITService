@@ -1,3 +1,4 @@
+
 <html>
     <head >
 <style>
@@ -20,7 +21,13 @@
                                     <a href="Contact.php" data-href="Contact" class="nav-link">Контакты</a>
                                 </li>
                                 </li>
-                                    <a href="SingUp.php" data-href="Contact" class="nav-link" style="text-decoration: underline;">Вход/Регистрация</a>
+                                    <?php if( isset($_SESSION['logged_user']) ) : ?>  
+                                        <a href="#"  class="nav-link" style="text-decoration: underline;"><?php echo $_SESSION['logged_user']->name;?> <?php echo $_SESSION['logged_user']->surname;?></a>;
+                                        <a href="SignOut.php"  class="nav-link" style="text-decoration: underline;">Выход</a>;
+                                    <?php else : ?>
+                                    <a href="SignIn.php" data-href="Contact" class="nav-link" style="text-decoration: underline;">Вход/Регистрация</a>;
+                                    <?php endif; ?>
+                                
                                 </li>
                             </ul>
                         </div>

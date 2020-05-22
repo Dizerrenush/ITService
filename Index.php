@@ -1,3 +1,7 @@
+<?php
+require "includes/db.php";
+?>
+
 <html>
     <head>
 <title>ITService</title>

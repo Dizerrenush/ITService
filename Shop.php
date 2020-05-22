@@ -1,3 +1,6 @@
+<?php
+require "includes/db.php";
+?>
 <html>
     <head lang="ru">
         <meta charset="utf-8">

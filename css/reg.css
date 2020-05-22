@@ -73,12 +73,19 @@
     text-transform: uppercase;
   }
 
-  .button:hover {
+  .button:hover 
+  {
     background: #0e9c4b;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
   
-    a.full__info{
+    a.full__info
+    {
         color: rgb(52, 170, 36);
         text-decoration: none;
+    }
+
+    a.link__tologin__reg 
+    {
+        color: blue;
     }

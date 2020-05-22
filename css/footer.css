@@ -1,0 +1,88 @@
+.footer{
+    background-color: #e8e8e8db;
+    width: 100%; 
+    margin-top: 5%;
+}
+
+.footer-inner{
+    display: flex;
+    margin-left: 9%;
+    margin-right: 9%;
+        
+}
+
+.column25{
+    flex: 0 0 25%;
+    max-width: 25%;
+    margin-top: 1%;
+}
+
+.column50{
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 1%;
+}
+
+.footer__rules {
+    color: #0000FF; /* Цвет ссылок */
+   }
+   .footer__rules :visited {
+    color: #0000FF; /* Цвет посещенных ссылок */
+   }
+   .footer a:active {
+    color: red; /* Цвет активных ссылок */
+   }
+
+   .footer-inner__company {
+    display:flex;
+    align-items: center;
+}
+   .footer-inner__company__name{
+    color: #414e5b;
+    line-height: 1pt;
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: 'Century Gothic','Open Sans';
+}
+.footer-inner__company img{
+    width: 30px;
+}
+
+.footer-navigation ul{
+    list-style: none;
+    display: grid;
+    margin: auto;
+    line-height: 0px;
+    padding-left: 0px;
+    margin-top: 1%;
+}
+.footer-navigation a {
+    text-align: center;
+    padding: 1em;
+    font-size: 16px;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    }
+
+    .footer-inner__number{
+        display: flex;
+    }
+
+    .footer-inner__number p{
+        color: #414e5b;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'Century Gothic','Open Sans';
+    }
+
+    .footer__bottom{
+        background-color: #023e7f;
+    }
+    .footer-inner__bottom{
+        color: white;
+        font-size: 13px;
+        justify-content: flex-end;
+        display: flex;
+        margin-right: 1%;
+    }

@@ -1,0 +1,84 @@
+.form-wrap {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  .form-wrap *{transition: .1s linear}
+ 
+  form {
+    background: white;
+    float: left;
+    padding: 30px;
+    width: 50%;
+    border-radius: 0 20px 20px 0;
+    color: #7b7b7b; 
+  }
+  .form-wrap:after, form div:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  form div {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 400;
+    position: relative;
+    margin-top: 50px;
+  }
+  h1:after {
+    content: "\f138";
+    font-size: 40px;
+    font-family: FontAwesome;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  
+  label, span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="phone"]{
+    border-width: 0;
+    outline: none;
+    margin: 0;
+    width: 100%;
+    padding: 10px 15px;
+    background: #e6e6e6;
+  }
+  input[type="text"]:focus, input[type="email"]:focus {
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.2);
+  }
+  
+  button {
+    background-color: #218c4f;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15pt;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.5s;
+    margin-top: 2%;
+    text-transform: uppercase;
+  }
+
+  .button:hover {
+    background: #0e9c4b;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+  
+    a.full__info{
+        color: rgb(52, 170, 36);
+        text-decoration: none;
+    }

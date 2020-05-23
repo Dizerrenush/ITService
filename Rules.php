@@ -4,6 +4,7 @@
         <meta charset="utf-8">
 <title>Правила</title>
 <link rel="stylesheet" href="css/pravila.css">    
+<link rel="stylesheet" href="css/font.css">    
 </head>
     <body>
 <div class="pravila">

@@ -9,7 +9,7 @@ jQuery(document).ready(function($)
 		tabSignup = formModalTab.children('li').eq(1).children('a'),
 		forgotPasswordLink = formLogin.find('.cd-form-bottom-message a'),
 		backToLoginLink = formForgotPassword.find('.cd-form-bottom-message a'),
-		mainNav = $('.nav');
+		mainNav = $('.header__top');
 
 	
 	//open sign-up form

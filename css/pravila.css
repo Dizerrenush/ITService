@@ -1,6 +1,16 @@
+
+
+
+#content h1 {
+    margin-bottom: 2rem;
+}
+
+body {
+    
+}
+
 .pravila
 {margin: 0;
-    font-family: ProximaNova,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;

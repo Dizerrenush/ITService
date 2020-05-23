@@ -1,10 +1,11 @@
+<?php include "Header_up.php";?>
 <html>
     <head >   
 </head>
     <body>
         <header class ="header">
             <div class="header-inner">
-                <?php include "Header_up.php";?>
+                
                 <div class="header__centre">
                     <div class="header-inner__centre">
                         <div class="header-inner__centre__company">

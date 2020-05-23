@@ -1,3 +1,6 @@
+<?php 
+            include "includes/Header.php";
+        ?>
 <html>
     <head lang="ru">
         <meta charset="utf-8">
@@ -7,9 +10,7 @@
 </style>     
 </head>
     <body>
-        <?php 
-            include "includes/Header.php";
-        ?>
+        
         <?php 
             include "includes/Footer.php";
         ?>

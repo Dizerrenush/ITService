@@ -1,22 +1,11 @@
-<?php
-require "includes/db.php";
-?>
+<?php include "includes/Header.php";?>
 <html>
     <head lang="ru">
         <meta charset="utf-8">
 <title>Правила</title>
-<style>
-    @import url("css/header.css");
-    @import url("css/footer.css");
-    @import url("css/pravila.css");
-    @import url("css/font.css");
-</style>     
+<link rel="stylesheet" href="css/pravila.css">    
 </head>
     <body>
-        <?php 
-            include "includes/Header.php";
-        ?>
-
 <div class="pravila">
                 <h1>ПРАВИЛА И УСЛОВИЯ НА ВЫПОЛНЕНИЕ РЕМОНТНЫХ РАБОТ<br>
                     В СЕРВИСНОМ ЦЕНТРЕ ТИПОВЫЕ (ЕДИНЫЕ)<br>

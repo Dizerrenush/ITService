@@ -1,20 +1,12 @@
-<?php
-require "includes/db.php";
-?>
-<html>
-    <head lang="ru">
-        <meta charset="utf-8">
-<title>Скупка, продажа</title>
-<style>
-    @import url("css/font.css");
-</style>     
+<?php include "includes/Header.php";?>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-    <body>
-        <?php 
-            include "includes/Header.php";
-        ?>
-        <?php 
-            include "includes/Footer.php";
-        ?>
-    </body>
+<body>
+  
+<?php include "includes/Footer.php";?>
+</body>
 </html>

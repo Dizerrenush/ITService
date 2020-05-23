@@ -9,9 +9,48 @@ require "db.php";
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/reset.css">
+    <script src="js/main.js"></script>
 </head>
 
 <body>
+
+    <div class="modal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <ul class="modal__nav">
+                    <li>
+                        <a class="modal__switcher signin active" href="#signin">Войти</a>
+                    </li>
+                    <li>
+                        <a class="modal__switcher signup"href="#signup">Зарегистрироваться</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal__form signin active">
+                <form metod="post" action="Sign.php">
+                    <input type="text" name="username" placeholder="Логин*" required>
+                    <input type="password" name="password" placeholder="Пароль*" required>
+                    <input type="hidden" name="do_signin">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="modal__form signup">
+                <form metod="post" action="Sign.php">
+                    <input type="text" name="username" placeholder="Логин*" required>
+                    <input type="text" name="username" placeholder="E-mail">
+                    <input type="text" name="username" placeholder="Имя*" required>
+                    <input type="text" name="username" placeholder="Фамилия*" required>
+                    <input type="text" name="username" placeholder="Мобильный телефон*" required>
+                    <input type="password" name="password" placeholder="Пароль*" required>
+                    <input type="password" name="password_2" placeholder="Повторите пароль*" required>
+                    <input type="hidden" name="do_signup">
+                    <input type="submit"  value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <header class="header">
         <nav class="header__top">
             <ul>
@@ -83,115 +122,6 @@ require "db.php";
         </div>
     </header>
 
-    <div class="cd-user-modal">
-        <!-- this is the entire modal form, including the background -->
-        <div class="cd-user-modal-container">
-            <!-- this is the container wrapper -->
-            <ul class="cd-switcher">
-                <li><a href="#0">Вход</a></li>
-                <li><a href="#0">Регистрация</a></li>
-            </ul>
-
-            <div id="cd-login">
-                <!-- log in form -->
-                <form class="cd-form" method="post" action="Sign.php">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username" for="signin-username">Логин</label>
-                        <input class="full-width has-padding has-border" name="username" id="signin-username" type="text" placeholder="Логин*" required>
-
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signin-password">Пароль</label>
-                        <input class="full-width has-padding has-border" name="password" id="signin-password" type="password" placeholder="Пароль*" required>
-                        <a href="#0" class="hide-password">Hide</a>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="remember-me" checked>
-                        <label for="remember-me">Запомнить меня</label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width" type="submit" name="do_signin" value="Войти">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Забыли пароль?</a></p>
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
-            </div> <!-- cd-login -->
-
-            <div id="cd-signup">
-                <!-- sign up form -->
-                <form class="cd-form" method="post" action="Sign.php">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username">Логин</label>
-                        <input class="full-width has-padding has-border" name="username" type="text" placeholder="Логин*" required>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-email">E-mail</label>
-                        <input class="full-width has-padding has-border" name="email" type="email" placeholder="E-mail">
-                    </p>
-                    <p class="fieldset">
-                        <label class="image-replace cd-username">Имя</label>
-                        <input class="full-width has-padding has-border" name="name" type="text" placeholder="Имя*" required>
-                    </p>
-                    <p class="fieldset">
-                        <label class="image-replace cd-username">Фамилия</label>
-                        <input class="full-width has-padding has-border" name="surname" type="text" placeholder="Фамилия*" required>
-                    </p>
-                    <p class="fieldset">
-                        <label class="image-replace cd-username">Номер телефона</label>
-                        <input class="full-width has-padding has-border" name="surname" type="text" placeholder="Номер телефона" required>
-                    </p>
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Пароль</label>
-                        <input class="full-width has-padding has-border" name="password" type="password" placeholder="Пароль*" required>
-                        <a href="#0" class="hide-password">Hide</a>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password">Повторите пароль</label>
-                        <input class="full-width has-padding has-border" name="password_2" type="password" placeholder="Повторите пароль*" required>
-                        <a href="#0" class="hide-password">Hide</a>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms">Я согласен с <a href="#0">правилами</a></label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" name="do_signup" value="Зарегистрироваться">
-                    </p>
-                </form>
-
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
-            </div> <!-- cd-signup -->
-
-            <div id="cd-reset-password">
-                <!-- reset password form -->
-                <p class="cd-form-message">Забыли пароль? Введите ваш E-mail и мы вышлем вам код восстановления.</p>
-
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Reset password">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Назад</a></p>
-            </div> <!-- cd-reset-password -->
-            <a href="#0" class="cd-close-form">Закрыть</a>
-        </div> <!-- cd-user-modal-container -->
-    </div> <!-- cd-user-modal -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/modal.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,4 @@
-<?php
-require "includes/db.php";
-?>
+<?php include "includes/Header.php";?>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -20,10 +18,6 @@ body h2{
 </style>    
 </head>
     <body>
-        <?php 
-            include "includes/Header.php";
-        ?>
-
         <div class="content">
             <div class="content-inner">
                 <div class="description">

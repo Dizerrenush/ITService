@@ -37,8 +37,8 @@
                         <div class ="footer-inner__number">
                             <p>+7 (909) 090-80-60</p>
                         </div>
-                        <a href="https://vk.com/club_itservice" class="img-button"><img src="images/VK.png" width="30" height="30" alt="Вконтакте"></a>
-                        <a href="https://www.instagram.com/itservice174/" class="img-button"><img src="images/INST.png" width="30" height="30" alt="Вконтакте"></a>
+                        <a href="https://vk.com/club_itservice" class="img-button"><img src="img/VK.png" width="30" height="30" alt="Вконтакте"></a>
+                        <a href="https://www.instagram.com/itservice174/" class="img-button"><img src="img/INST.png" width="30" height="30" alt="Вконтакте"></a>
                     
                 </div>
             </div>

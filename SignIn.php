@@ -44,10 +44,8 @@ if( isset($data['do_signin']))
 <html>
     <head lang="ru">
 <title>Регистрация</title>
-<style>
-    @import url("css/font.css");
-    @import url("css/reg.css");
-</style>     
+<link rel="stylesheet" href="css/reg.css">
+   
 </head>
     <body>
         <?php 

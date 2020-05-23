@@ -1,15 +1,14 @@
 <?php
 require "includes/db.php";
 ?>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html>
-    <head>
-<title>ITService</title>
+<link rel="stylesheet" href="css/body.css">
 
 <style>
-    @import url("css/font.css");
-    @import url("css/body.css");
-    
     body h1{
    font-size: 40pt;
     font-weight: bold;
@@ -18,8 +17,6 @@ require "includes/db.php";
 body h2{
    font-size: 25pt;
 }
-
-
 </style>    
 </head>
     <body>
@@ -37,7 +34,7 @@ body h2{
                         <a href="#" class="button">Вызвать мастера</a>
                     </div>
                 </div>
-                <img src="images/Comp.png" class="comp">
+                <img src="img/Comp.png" class="comp">
                 
             </div>
         </div>
@@ -45,7 +42,6 @@ body h2{
         <?php
         include "includes/Footer.php";
         ?>
-    
+
     </body>
-    
 </html>

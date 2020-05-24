@@ -1,6 +1,15 @@
+.sidebar.active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: all .3s ease-in-out 0s;
+    transition: all .3s ease-in-out 0s;
+}
+
 .sidebar.active .sidebar-content {
     -webkit-transform: translateX(0);
     transform: translateX(0);
+    -webkit-transition: all .3s ease-in-out 0s;
+    transition: all .3s ease-in-out 0s;
 }
 
 .sidebar{
@@ -8,6 +17,9 @@
   height: 100%;
   z-index: 99999999;
   position: fixed;
+    transform: translateX(-100%);
+    -webkit-transition: all .3s ease-in-out 0s;
+    transition: all .3s ease-in-out 0s;
 }
 .sidebar .sidebar-content {
     width: 80%;

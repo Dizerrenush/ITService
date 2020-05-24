@@ -272,7 +272,7 @@
 .m-line03{
     top: 22px;
 }
-.sign{
+.sign, .user-link{
     background: #023e7f;
     border: none;
     display: inline-block;
@@ -290,6 +290,8 @@
     color: #FFF;
     text-decoration: none;
 }
+
+
 @media (max-width: 1129px) {
     .header__bottom {
         display: none;

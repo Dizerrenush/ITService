@@ -59,7 +59,7 @@ require "db.php";
     <div class="sidebar">
         <div class="sidebar-content">
             <div class="top-head">
-                
+
             </div>
             <div class="nav-left">
 
@@ -69,13 +69,14 @@ require "db.php";
                     Адреса</a>
                 <a href="Contact.php" data-href="Contact" class="nav-link">Контакты</a>
                 <a href="Index.php" class="nav-link">
-                    
+
                     Главная</a>
                 <a href="Shop.php" class="nav-link">Продажа</a>
                 <a href="price/Прайс.pdf" class="nav-link">Прейскурант</a>
                 <?php if (isset($_SESSION['logged_user'])) : ?>
-                    
-                        Личный кабинет</a>
+                    <a href="User_page.php" class="nav-link">Личный кабинет</a>
+                    <a href="SignOut.php" class="nav-link">Выход</a>
+
                 <?php endif; ?>
             </div>
         </div>
@@ -94,7 +95,7 @@ require "db.php";
                 </li>
                 <?php if (isset($_SESSION['logged_user'])) : ?>
                     <li><a href="#" class="nav-link" style="text-decoration: underline;"><?php echo $_SESSION['logged_user']->fullname; ?></a></li>
-
+                    <li><a href="User_page.php" class="nav-link">Личный кабинет</a></li>
                     <li><a href="SignOut.php" class="nav-link" style="text-decoration: underline;">Выход</a></li>
                 <?php else : ?>
                     <li><a class="cd-signin" href="#0">Вход/Регистрация</a></li>
@@ -107,7 +108,12 @@ require "db.php";
                 <span class="open__menu m-line02"></span>
                 <span class="open__menu m-line03"></span>
             </button>
-            <a class="sign" href="#0">Вход/Регистрация</a>
+            <?php if (isset($_SESSION['logged_user'])) : ?>
+                <a href="#" class="user-link" style="text-decoration: underline;"><?php echo $_SESSION['logged_user']->fullname; ?></a>
+            <?php else : ?>
+                <a class="sign" href="#0">Вход/Регистрация</a>
+            <?php endif; ?>
+
         </div>
         <div class="header__middle">
             <div class="header__logo">
@@ -127,11 +133,6 @@ require "db.php";
                     <li class="nav-item">
                         <a href="price/Прайс.pdf" class="nav-link">Прейскурант</a>
                     </li>
-                    <?php if (isset($_SESSION['logged_user'])) : ?>
-                        <li class="nav-item">
-                            <a href="User_page.php" class="nav-link">Личный кабинет</a>
-                        </li>
-                    <?php endif; ?>
                 </ul>
             </div>
             <div class="header__info">

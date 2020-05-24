@@ -9,6 +9,16 @@ function toggleModal(e) {
     document.querySelector(".form__output").innerHTML = "";
 }
 
+function toggleMenu(e) {
+    let menu = document.querySelector('.sidebar');
+    if (menu.classList.contains("active")) {
+        if (e.target.classList.contains('sidebar'))
+            menu.classList.remove('active');
+    } else {
+        menu.classList.add('active');
+    }
+}
+
 function switchTab(name){
     name=(name=='signin') ? name : 'signup';
     document.querySelector('.modal__form.active').classList.remove('active'); 
@@ -71,7 +81,10 @@ function main() {
             xhr.send(urlEncodedData);
         };
     })
-
+    let button__mobile__menu = document.querySelector('.toggler');
+    if(button__mobile__menu) 
+    button__mobile__menu.onclick = toggleMenu;
+    
     let button = document.querySelector('.cd-signin');
     if(button) 
     button.onclick = toggleModal;
@@ -80,6 +93,7 @@ function main() {
     button__mobile.onclick = toggleModal;
     // document.querySelector('.cd-signup').onclick = toggleModalReg;
     document.querySelector('.modal').onclick = toggleModal;
+    document.querySelector('.sidebar').onclick = toggleMenu;
 
     document.querySelectorAll(".modal__nav a").forEach(elem => {
         let tab = elem.href.replace(/.+#(\w+)/,"$1");

@@ -6,9 +6,12 @@ require "db.php";
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/header.css">
+
+
     <script src="js/main.js"></script>
 </head>
 
@@ -53,8 +56,30 @@ require "db.php";
             </div>
         </div>
     </div>
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="top-head">
+                
+            </div>
+            <div class="nav-left">
 
+                <a>Выбрать город</a>
+                <a href="Address.php" data-href="Address" class="nav-link">
 
+                    Адреса</a>
+                <a href="Contact.php" data-href="Contact" class="nav-link">Контакты</a>
+                <a href="Index.php" class="nav-link">
+                    
+                    Главная</a>
+                <a href="Shop.php" class="nav-link">Продажа</a>
+                <a href="price/Прайс.pdf" class="nav-link">Прейскурант</a>
+                <?php if (isset($_SESSION['logged_user'])) : ?>
+                    
+                        Личный кабинет</a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
     <header class="header">
         <nav class="header__top">
             <ul>
@@ -100,7 +125,7 @@ require "db.php";
                         <a href="Shop.php" class="nav-link">Продажа</a>
                     </li>
                     <li class="nav-item">
-                        <a href="Price_list.php" class="nav-link">Прейскурант</a>
+                        <a href="price/Прайс.pdf" class="nav-link">Прейскурант</a>
                     </li>
                     <?php if (isset($_SESSION['logged_user'])) : ?>
                         <li class="nav-item">
@@ -122,7 +147,7 @@ require "db.php";
         <div class="header__bottom">
             <div class="bottom__nav">
 
-                <a href="#" class="nav-link">Ремонт Apple</a>
+                <a href="#" class="nav-link">Ремонт телевизоров</a>
                 <a href="#" class="nav-link">Ремонт телефонов</a>
                 <a href="#" class="nav-link">Ремонт ноутбуков</a>
                 <a href="#" class="nav-link">Ремонт планшетов</a>

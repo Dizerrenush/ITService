@@ -101,6 +101,7 @@
 .phone__number, .address{
     display: flex;
     align-items: center;
+    padding: 5%;
 }
 
 .phone__number p, .address p{
@@ -111,12 +112,17 @@
 
 .address p{
     font-size: 15pt;
-    line-height: 35pt;
+    line-height: 23pt;
 }
 
-.mail{
+.mail, .social {
     display: flex;
     align-items: center;
+    padding: 5%;
+}
+
+.social a{
+    padding: 1%;
 }
 
 .mail p{

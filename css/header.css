@@ -110,6 +110,11 @@
     .header__middle ul  {
         display: none;
     }
+
+    .header__middle__wraper{
+        
+        display: none;
+    }
     
 }
 

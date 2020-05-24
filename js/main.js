@@ -6,14 +6,25 @@ function toggleModal(e) {
     } else {
         modal.classList.add('active');
     }
+    document.querySelector(".form__output").innerHTML = "";
 }
 
 function switchTab(name){
     name=(name=='signin') ? name : 'signup';
     document.querySelector('.modal__form.active').classList.remove('active'); 
-    document.querySelector('.modal__form.'+name).classList.add('active'); 
+    document.querySelector('.modal__form.'+name).classList.add('active');
+    let switcherin = document.querySelector('.modal__frame');
+
+     if (switcherin.classList.contains("left")){   
+       
+        switcherin.classList.remove('left');
+
+     } else {
+         switcherin.classList.add('left');
+     } 
     document.querySelector('.modal__switcher.active').classList.remove('active'); 
-    document.querySelector('.modal__switcher.'+name).classList.add('active'); 
+    document.querySelector('.modal__switcher.'+name).classList.add('active');
+    document.querySelector(".form__output").innerHTML = ""; 
 }
 
 function main() {
@@ -40,19 +51,33 @@ function main() {
             xhr.open('POST', link, true);//true - асинхронно
 
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//классика
+            
 
             xhr.onreadystatechange = function () {
                 if (this.readyState != 4) return;
 
-                alert(this.responseText);
+                 let result = JSON.parse(this.responseText);
+                if(result.state == "4") document.location.href="Index.php"; 
+                if(result.state == "2"){ 
+                    switchTab('signin');
+
+            } 
+                 document.querySelector(".form__output").innerHTML = result.err;
+                 
+
+                 
             }
             // console.log(urlEncodedData);
             xhr.send(urlEncodedData);
         };
     })
 
-    
-    document.querySelector('.cd-signin').onclick = toggleModal;
+    let button = document.querySelector('.cd-signin');
+    if(button) 
+    button.onclick = toggleModal;
+    let button__mobile = document.querySelector('.sign');
+    if(button__mobile) 
+    button__mobile.onclick = toggleModal;
     // document.querySelector('.cd-signup').onclick = toggleModalReg;
     document.querySelector('.modal').onclick = toggleModal;
 

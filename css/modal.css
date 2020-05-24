@@ -13,56 +13,138 @@
   display: flex;
 }
 
-.modal__form {
-  display: none;
-  flex-direction: column;
-}
-
-.modal__form form {
-  display: flex;
-    flex-direction: column;
-}
-.modal__form.active {
-  display: flex;
-}
-
-.modal__form.active .modal__header .modal__nav li a{
-  background: #FFF;
-  color: #505260;
-}
-
 .modal__content {
-  display: block;
-  position: relative;
-  width: 30%;
-  height: 30%;
-  background: lightblue;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 100px;
 }
 
-
-.modal__header .modal__nav {
+.modal__content__form{
   display: flex;
+  transition: all .5s ease;
+  padding: 0 9%;
+  padding-top: 13%;
+
+}
+
+.modal__frame.left .modal__content__form{
+  transform: translateX(-77%);
+  transition: all .5s ease;
+}
+ 
+
+
+.modal__frame {
+  width: 430px;
+  background:  rgb(35, 43, 85);
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+@media (max-width: 479px) {
+  .modal__frame {
+      width: 320px;
+  }
+}
+
+.modal__header {
   width: 100%;
-  justify-content: center;
+  padding-top: 8%;
+  opacity: 1;
+  transition: all .5s ease;
 }
 
 .modal__header .modal__nav li {
-  width: 50%;
-  float: left;
-  text-align: center;
+  padding-left: 10px;
+  font-size: 18px;
+  display: inline;
+  text-align: left;
+  text-transform: uppercase;
+  padding-right: 10px;
+  color: #ffffff;
 }
 
-.modal__header .modal__nav .modal__switcher{
-  display: block;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  background: #d2d8d8;
-  color: #809191;
+.modal__header .modal__nav .modal__switcher {
+  padding-bottom: 0;
+  color: rgba(255, 255, 255, .3);
   text-decoration: none;
+  border-bottom: none;
+  cursor: pointer;
+  
+}
+/*  */
+.modal__header .modal__nav .modal__switcher.active {
+  padding-bottom: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: solid 2px #1059FF;
+  transition: all .25s ease;
+  cursor: pointer;
+  
 }
 
-.modal__header .modal__nav .modal__switcher.active{
-  background: #FFF;
-  color: #505260;
+.modal__form {
+  display: flex;
+  position: relative;
+  width: 95%;
+  transition: all .5s ease;
+  opacity: 0;
+  
+}
+
+.modal__form.active {
+  opacity: 1;
+  transition: all .5s ease;
+}
+
+
+.modal__form form {
+  width: 430px;
+  height: 375px;
+  font-size: 16px;
+  font-weight: 300;
+  
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.modal__form form input {
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.form-styling {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, .2);
+}
+
+.btn-sign {
+  float: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+  margin-left: 7px;
+  color: #ffffff;
+  padding-top: 8px;
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 23px;
+  background-color: #1059FF;
+}
+
+a.btn-sign:hover {
+  cursor: pointer;
+  background-color: #0F4FE6;
+  transition: background-color .5s;
 }

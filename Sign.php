@@ -4,45 +4,51 @@ require "includes/db.php";
 
 $data = $_POST;
 //регистрация
+$result = array(
+    "err" => [],
+    "state" => 0,
+);
 if (isset($data['do_signup'])) {
-    $errors = array();
     if (trim($data['username']) == '') {
-        $errors[] = 'Поле логине не должно быть пустым';
+        $result["err"][] = 'Поле логина не должно быть пустым';
     }
 
-    if ($data['password_2'] != $data['password']) {
-        $errors[] = 'Пароли не совпадают';
+    if ($data['confirmpassword'] != $data['password']) {
+        $result["err"][] = 'Пароли не совпадают';
     }
 
     if (R::count('accounts', "username = ?", array($data['username'])) > 0) {
-        $errors[] = 'Пользователь с таким логином уже существует';
+        $result["err"][] = 'Пользователь с таким логином уже существует';
     }
 
     if (R::count('accounts', "email = ?", array($data['email'])) > 0) {
-        $errors[] = 'Пользователь с таким Email уже существует';
+        $result["err"][] = 'Пользователь с таким Email уже существует';
     }
 
-    if (empty($errors)) {
+    if (count($result["err"]) == 0 ) {
         //добавляем пользователя в БД
         $accounts = R::dispense('accounts');
         $accounts->username = $data['username'];
         $accounts->email = $data['email'];
-        $accounts->name = $data['name'];
-        $accounts->surname = $data['surname'];
+        $accounts->fullname = $data['fullname'];
         $accounts->phone = $data['phone'];
         $accounts->password = password_hash($data['password'], PASSWORD_DEFAULT);
         R::store($accounts);
-        echo 'Вы успешно зарегистрировались, вернитесь на главную страницу';
+        $result["state"] =  2 ;
+        
+        $result["err"][] = 'Вы успешно зарегистрировались, можете выполнить вход';
+    
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
     } else {
-        echo  array_shift($errors);
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
     }
 }
 
 //ВХОД
 if (isset($data['do_signin'])) {
-    $errors = array();
+    
     if (trim($data['username']) == '') {
-        $errors[] = 'Поле логине не должно быть пустым';
+        $result["err"][] = 'Поле логина не должно быть пустым';
     }
     $user = R::findOne('accounts', 'username = ?', array($data['username']));
 
@@ -51,16 +57,21 @@ if (isset($data['do_signin'])) {
             //Совершаем вход
             $_SESSION['logged_user'] = $user;
         } else {
-            $errors[] = 'Неверно введен пароль';
-        }
+        
+            $result["err"][] = 'Введена неверная комбинация логина пароля';        }
     } else {
-        $errors[] = 'Пользователь не найден';
+        $result["err"][] = 'Введена неверная комбинация логина пароля';
     }
 
-    if (empty($errors)) {
-        echo 'Вход выполнен, вернитесь на главную страницу';
+
+    if (count($result["err"]) == 0 ) {
+        // $result
+        $result["state"] =  4 ;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
     } else {
-        echo  array_shift($errors) ;
+
+        $result["state"] =  1 ;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE); ;
     }
 }
 ?>

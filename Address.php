@@ -1,18 +1,12 @@
-<?php 
-            include "includes/Header.php";
-        ?>
-<html>
-    <head lang="ru">
-        <meta charset="utf-8">
-<title>Адруса наших магазинов</title>
-<style>
-    @import url("css/font.css");
-</style>     
+<?php include "includes/Header.php";?>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адреса наших магазинов</title>
 </head>
-    <body>
-        
-        <?php 
-            include "includes/Footer.php";
-        ?>
-    </body>
+<body>
+  
+<?php include "includes/Footer.php";?>
+</body>
 </html>

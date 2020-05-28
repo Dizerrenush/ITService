@@ -168,7 +168,7 @@
     justify-content: flex-end;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 1129px) {
     .header__info{
         display: none;
     }
@@ -225,8 +225,8 @@
     display: flex;
     color: rgb(0, 0, 0);
     text-decoration: none;
-    padding: .5% 2%;
-    font-size: 17pt;
+    padding: .5% 1%;
+    font-size: 15pt;
 
 }
 

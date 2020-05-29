@@ -3,6 +3,7 @@ require "includes/db.php";
 
 
 $data = $_POST;
+$imgdata = $_SERVER;
 $result = array(
     "err" => [],
     "state" => 0,
@@ -72,52 +73,109 @@ if (isset($data['do_show__req'])) {
     $users = R::findAll('applications');
     $result["state"] =  10;
     $result["err"][] = 'Весь список';
-    $result ["users"] = $users;
+    $result["users"] = $users;
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }
 
 
 if (isset($data['do_show__req__num'])) {
     $search = $data['phone'];
-    $users = R::find('applications', 'phone LIKE ?', ["%$search%"]);
+    $users = R::findAll('applications', 'phone LIKE ?', ["%$search%"]);
     // echo json_encode($users, JSON_UNESCAPED_UNICODE);
-    if($users){
-    $result["state"] =  10;
-    $result["err"][] = 'Список по заданному номеру';
-    $result ["users"] = $users;
-    echo json_encode($result, JSON_UNESCAPED_UNICODE);
-    }else{
+    if ($users) {
+        $result["state"] =  10;
+        $result["err"][] = 'Список по заданному номеру';
+        $result["users"] = $users;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    } else {
         $result["state"] =  2;
-    $result["err"][] = 'Нет заявок с таким номером телефона';
-    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+        $result["err"][] = 'Нет заявок с таким номером телефона';
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
     }
 }
-$path = 'shopimg/';
+
 if (isset($data['do_add__tech'])) {
- 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-     if (!@copy($_FILES['picture']['tmp_name'], $path . $_FILES['picture']['name']))
-     $result["err"][] =  'Что-то пошло не так';
-     else
-     $result["err"][] =  'Загрузка удачна';
-     $result["state"] =  2;
-  echo json_encode($result, JSON_UNESCAPED_UNICODE);
-    }
-    //  if (!@copy($_FILES['picture']['tmp_name'], $path . $_FILES['picture']['name']))
-    //  $result["err"][] = 'Что-то пошло не так   ';
-    //  else
-    //   $result["err"][] = 'Загрузка удачна';
+
+
+
+    // $path = 'shopimg/';
+
     
-    //   $result["err"][] = $_FILES['picture']['tmp_name'];
+    //     if (!@copy($imgdata['picture']['tmp_name'], $path . $imgdata['picture']['name']))
+    //     $result["err"][] = 'Что-то пошло не так';
+    //     else
+    //     $result["err"][] = 'Загрузка удачна';
+    
+
+
+    if (count($result["err"]) == 0) {
+        //добавляем заявку в БД
+
+        $shop = R::dispense('shop');
+        $shop->type = $data['type'];
+        $shop->model = $data['model'];
+        $shop->text = $data['desc'];
+        $shop->img = "shopimg/1";
+        $shop->price = $data['price'];
+        R::store($shop);
+        $result["state"] =  4;
+
+        $result["err"][] = 'Новая техника добавлена на продажу';
+
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    } else {
+        $result["state"] =  2;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
+}
+
+if (isset($data['do_show__tech'])) {
+    $shop = R::findAll('shop');
+    $result["state"] =  11;
+    $result["err"][] = 'Весь список';
+    $result["shop"] = $shop;
+    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+}
+
+if (isset($data['do_change_req'])){
+    $search = $data['id'];
+    $applications = R::findOne('applications', 'id LIKE ?', ["%$search%"]);
+    if($applications){}else{$result["err"][] = 'Заявка не найдена';}
+    $searchM = $data['master'];
+    $users = R::findOne('accounts', 'username LIKE ?', ["%$searchM%"]);
+    if($users && $users['usertype']=='master'){}else{$result["err"][] = 'Мастер не найден';}
+    if (count($result["err"]) == 0) {
+        //изменяем заявку в БД
+        $applications->master = $users['fullname'];
+        $applications->status = $data['status'];
+        $applications->fullname = $data['fullname'];
+        $applications->phone = $data['phone'];
+        $applications->type = $data['type'];
+        $applications->model = $data['model'];
+        $applications->issue = $data['issue'];
+        R::store($applications);
+        $result["state"] =  4;
+
+        $result["err"][] = 'Заявка успешно изменена';
+
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    } else {
+        $result["state"] =  2;
+        $result["err"][] = 'Не удалось';
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
+}
+
+
+if (isset($data['do_change_tech'])){
     // if (count($result["err"]) == 0) {
     //     //добавляем заявку в БД
 
     //     $shop = R::dispense('shop');
     //     $shop->type = $data['type'];
     //     $shop->model = $data['model'];
-    //     $shop->text = $user['text'];
-    //     $shop->img = $path . $_FILES['picture']['name'];
+    //     $shop->text = $data['desc'];
+    //     $shop->img = "shopimg/1";
     //     $shop->price = $data['price'];
     //     R::store($shop);
     //     $result["state"] =  4;
@@ -129,4 +187,23 @@ if (isset($data['do_add__tech'])) {
     //     $result["state"] =  2;
     //     echo json_encode($result, JSON_UNESCAPED_UNICODE);
     // }
+}
+
+
+
+
+if (isset($data['do_show__userlist__num'])) {
+    $search = $data['phone'];
+    $users = R::find('accounts', 'phone LIKE ?', ["%$search%"]);
+    // echo json_encode($users, JSON_UNESCAPED_UNICODE);
+    if ($users) {
+        $result["state"] =  12;
+        $result["err"][] = 'Список по заданному номеру';
+        $result["users"] = $users;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    } else {
+        $result["state"] =  2;
+        $result["err"][] = 'Нет пользователей с таким номером телефона';
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
 }

@@ -9,6 +9,8 @@
     <?php header('Location: 404NotFound.php'); ?>
 
 <?php endif; ?>
+
+
 <html lang="ru">
 
 <head>
@@ -23,6 +25,9 @@
         <div class="content__body">
             <nav class="nav">
                 <ul>
+                    <?php if ($_SESSION['logged_user']->usertype == "admin") : ?>
+                        <li class="btn__switch show__user"><a href="#show__user">Просмотр пользователей</a></li>
+                    <?php endif; ?>
                     <li class="btn__switch show__req"><a href="#show__req">Просмотреть все заявки</a></li>
                     <li class="btn__switch add_req selected"><a href="#add_req">Добавить заявку</a></li>
                     <li class="btn__switch show__tech"><a href="#show__tech">Просмотреть весь список продажи</a></li>
@@ -44,7 +49,7 @@
                     <input class="btn" type="submit" value="Submit">
 
                 </form>
-                <div class="form__table">
+                <div class="form__table req">
 
                 </div>
             </div>
@@ -95,7 +100,7 @@
                     <input class="btn" type="submit" value="Submit">
 
                 </form>
-                <div class="form__table">
+                <div class="form__table tech">
 
                 </div>
             </div>
@@ -107,52 +112,66 @@
                     <div class="label">Модель:</div>
                     <input class="input__form" type="text" name="model" placeholder="Модель*" required>
                     <div class="label">Описание:</div>
-                    <input class="input__form" type="text" name="text" placeholder="Описание*" required>
+                    <input class="input__form" type="text" name="desc" placeholder="Описание*" required>
                     <div class="label">Цена:</div>
                     <input class="input__form" type="text" name="price" placeholder="Цена*" required>
-                    <div class="label">Фото техники:</div>
-                    <input class="input__form" name="picture" type="file" />
+                    <!-- <div class="label">Фото техники:</div>
+                    <input class="input__form" name="picture" type="file" /> -->
 
                     <input type="hidden" name="do_add__tech">
                     <input class="btn" type="submit" value="Submit">
 
                 </form>
-                
+
             </div>
 
+            <div class="content__form change_req">
+
+
+                <div class="form__table chng">
+
+                </div>
+            </div>
             <div class="content__form change_cell">
-            <h2>Изменение данных заявки</h2>
+                <!-- <h2>Изменение данных техники</h2>
                 <form method="post" action="BdRequest.php">
-                    
-                <div class="label">Мастер:</div>
-                    <input class="input__form" type="text" name="master" placeholder="мастер*" required>
-                    <div class="label">Статус:</div>
-                    <input class="input__form" type="text" name="status" placeholder="Статус*" required>
-                    <div class="label">Ф.И.О:</div>
-                    <input class="input__form" type="text" name="fullname" placeholder="Ф.И.О*" required>
-                    <div class="label">Номер телефона:</div>
-                    <input class="input__form" type="text" name="phone" placeholder="+7(___)___-__-__*" required>
-                    <div class="label">Тип техники:</div>
+                    <div class="label">IDs:</div>
+                    <input class="input__form" type="text" name="IDs" placeholder="IDs*" required>
+                    <div class="label">Тип:</div>
+                    <input class="input__form" type="text" name="type" placeholder="type*" required>
+                    <div class="label">Модель:</div>
+                    <input class="input__form" type="text" name="model" placeholder="model*" required>
+                    <div class="label">Описание:</div>
+                    <input class="input__form" type="text" name="text" placeholder="text*" required>
+                    <div class="label">Фото:</div>
+                    <input class="input__form" type="text" name="img" placeholder="img*" required>
+                    <div class="label">Цена:</div>
                     <input class="input__form" type="text" name="type" placeholder="Тип техники*" required>
                     <div class="label">Модель:</div>
-                    <input class="input__form" type="text" name="model" placeholder="Модель*" required>
-                    <div class="label">Проблема:</div>
-                    <input class="input__form phone" type="text" name="issue" placeholder="Проблема*" required>
-                    <input type="hidden" name="do_change_cell">
+
+                    <input type="hidden" name="do_change_tech">
+                    <input class="btn" type="submit" value="Submit">
+
+                </form> -->
+
+            </div>
+            <div class="content__form show__user">
+                <form method="post" action="BdRequest.php">
+                    <div class="label">Номер телефона:</div>
+                    <input class="input__form" type="text" name="phone" placeholder="Номер телефона*" required>
+                    <input type="hidden" name="do_show__userlist__num">
                     <input class="btn" type="submit" value="Submit">
 
                 </form>
-               
-            </div>
-            <div id="click-response">
+                <div class="form__table user">
 
-            </div>
-            <div class="form__outputbd">
+                </div>
+                <div class="form__outputbd">
 
+                </div>
             </div>
         </div>
-    </div>
-    <?php include "includes/Footer.php"; ?>
+        <?php include "includes/Footer.php"; ?>
 </body>
 
 </html>

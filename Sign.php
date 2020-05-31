@@ -13,6 +13,10 @@ if (isset($data['do_signup'])) {
         $result["err"][] = 'Поле логина не должно быть пустым';
     }
 
+    if (strlen($data['password']) <= 5 ) {
+        $result["err"][] = 'Пароль должен содержать больше 4 символов';
+    }
+
     if ($data['confirmpassword'] != $data['password']) {
         $result["err"][] = 'Пароли не совпадают';
     }
@@ -29,7 +33,8 @@ if (isset($data['do_signup'])) {
         $result["err"][] = 'Пользователь с таким номером телефона уже существует';
     }
 
-    if (count($result["err"]) == 0 ) {
+    
+    if (count($result["err"]) == 0) {
         //добавляем пользователя в БД
         $accounts = R::dispense('accounts');
         $accounts->username = $data['username'];
@@ -38,17 +43,8 @@ if (isset($data['do_signup'])) {
         $accounts->phone = $data['phone'];
         $accounts->password = password_hash($data['password'], PASSWORD_DEFAULT);
         R::store($accounts);
-
-    //     $user = R::findone('applications', 'phone = ?', array($data['phone']));
-
-    // if ($user){
-
-    //     $user->username = $data['username'] ;
-    // }
-        $result["state"] =  2 ;
-        
+        $result["state"] =  2;
         $result["err"][] = 'Вы успешно зарегистрировались, можете выполнить вход';
-    
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     } else {
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
@@ -57,7 +53,7 @@ if (isset($data['do_signup'])) {
 
 //ВХОД
 if (isset($data['do_signin'])) {
-    
+
     if (trim($data['username']) == '') {
         $result["err"][] = 'Поле логина не должно быть пустым';
     }
@@ -68,61 +64,59 @@ if (isset($data['do_signin'])) {
             //Совершаем вход
             $_SESSION['logged_user'] = $user;
         } else {
-        
-            $result["err"][] = 'Введена неверная комбинация логина пароля';        }
+
+            $result["err"][] = 'Введена неверная комбинация логина пароля';
+        }
     } else {
         $result["err"][] = 'Введена неверная комбинация логина пароля';
     }
 
 
-    if (count($result["err"]) == 0 ) {
+    if (count($result["err"]) == 0) {
         // $result
-        $result["state"] =  4 ;
+        $result["state"] =  4;
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     } else {
 
-        $result["state"] =  1 ;
-        echo json_encode($result, JSON_UNESCAPED_UNICODE); ;
+        $result["state"] =  1;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);;
     }
 }
 
 if (isset($data['do_change__password'])) {
-    
-    if (trim($data['username']) == '') 
-    {
+
+    if (trim($data['username']) == '') {
         $result["err"][] = 'Поле логина не должно быть пустым';
     }
     $user = R::findOne('accounts', 'username = ?', array($data['username']));
 
-     if ($user) 
-    {
-         if (password_verify($data['old__password'], $user->password)) {
-            
-             if ($data['confirm__new__password'] != $data['new__password']) 
-             {
-                 $result["err"][] = 'Новый пароль не совпадает';
-            }else{
-                
-             }
-         } else {
-             $result["err"][] = 'Старый пароль введен неверно';        }
-     } 
-    
-    
+    if ($user) {
+        if (password_verify($data['old__password'], $user->password)) {
 
-    if (count($result["err"]) == 0 ) {
+            if ($data['confirm__new__password'] != $data['new__password']) {
+                $result["err"][] = 'Новый пароль не совпадает';
+            } else {
+            }
+        } else {
+            $result["err"][] = 'Старый пароль введен неверно';
+        }
+    }
+
+
+
+    if (count($result["err"]) == 0) {
         // $result
 
         $user->password = password_hash($data['new__password'], PASSWORD_DEFAULT);
-        R::store( $user );
+        R::store($user);
         $result["err"][] = 'Пароль успешно изменен';
-        $result["state"] =  4 ;
+        $result["state"] =  4;
 
-        
+
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     } else {
 
-        $result["state"] =  1 ;
-        echo json_encode($result, JSON_UNESCAPED_UNICODE); ;
+        $result["state"] =  1;
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);;
     }
 }

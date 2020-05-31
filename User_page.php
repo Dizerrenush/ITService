@@ -15,13 +15,33 @@
         <h1>
             Личный кабинет
         </h1>
-        <ul class="switcher">
-            <li><a href="#">Заказы</a></li>
-            <li href="#" class="selected">Профиль</li>
+        <nav class="nav">
+            <ul>
+                <li class="selected">
+                    <form method="post" action="BdRequest.php">
+                        <input type="hidden" name="username" value="<?php echo $_SESSION['logged_user']->username; ?>">
+                        <input type="hidden" name="do_show__useract">
+                        <input type="submit" value="Активные заказы">
 
-        </ul><br>
+                    </form>
 
-        <a href="User_page.php#change">Изменение пароля</a>
+                </li>
+                <li>
+                    <form method="post" action="BdRequest.php">
+                        <input type="hidden" name="username" value="<?php echo $_SESSION['logged_user']->username; ?>">
+                        <input type="hidden" name="do_show__userinact">
+                        <input type="submit" value="Завершенные заказы">
+                    </form>
+                </li>
+
+            </ul>
+        </nav>
+        <br>
+        <div class="form__table user">
+
+        </div>
+        <br>
+
 
         <h3>Контактные данные</h3>
         <div class="label">Контактное лицо:</div>
@@ -32,19 +52,13 @@
         <div class="profile__field"><?php echo $_SESSION['logged_user']->phone; ?></div>
         <div class="label">Логин:</div>
         <div class="profile__field"><?php echo $_SESSION['logged_user']->username; ?></div>
-       
+
 
         <div>
-            <button type="button">
+            <button class="btn_2">
                 Редактировать личные данные
             </button></div>
-        <div>
-            <button type="button">
-                Сохранить
-            </button>&nbsp;
-            <button type="button">
-                Отмена
-            </button></div>
+
 
 
         <h3 id="password" class="profile__title">
@@ -62,7 +76,7 @@
                 <div class="label">Повторите новый пароль:</div>
                 <input class="input__form" type="password" name="confirm__new__password" placeholder="Повторите новый пароль*" required>
                 <input type="hidden" name="do_change__password">
-                <input class="btn" type="submit" value="Submit">
+                <input class="btn" type="submit" value="Сменить">
                 <div class="error__message">
 
                 </div>

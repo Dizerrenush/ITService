@@ -55,12 +55,12 @@ function main() {
             }
             urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
 
-            // console.log(body.);
+
 
             let xhr = new XMLHttpRequest();//инициализация запроса к sign.php
-            xhr.open('POST', link, true);//true - асинхронно
+            xhr.open('POST', link, true);
 
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//классика
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 
             xhr.onreadystatechange = function () {
@@ -77,7 +77,7 @@ function main() {
 
 
             }
-            // console.log(urlEncodedData);
+
             xhr.send(urlEncodedData);
         };
     })
@@ -91,7 +91,7 @@ function main() {
     let button__mobile = document.querySelector('.sign');
     if (button__mobile)
         button__mobile.onclick = toggleModal;
-    // document.querySelector('.cd-signup').onclick = toggleModalReg;
+    
     document.querySelector('.modal').onclick = toggleModal;
     document.querySelector('.sidebar').onclick = toggleMenu;
 
@@ -122,7 +122,7 @@ function change() {
             }
             urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
 
-            // console.log(body.);
+
 
             let xhr = new XMLHttpRequest();//инициализация запроса к sign.php
             xhr.open('POST', link, true);
@@ -148,7 +148,9 @@ function switchPage(name) {
     document.querySelector('.btn__switch.' + name).classList.add('selected');
     document.querySelector('.content__form.active').classList.remove('active');
     document.querySelector('.content__form.' + name).classList.add('active');
-    document.querySelector(".form__outputbd").innerHTML = "";
+    document.querySelector(".form__output").innerHTML = "";
+    document.querySelector(".form__output.red").innerHTML = "";
+    document.querySelector(".form__output.black").innerHTML = "";
     document.querySelector(".form__table.chng").innerHTML = "";
 }
 function switchPagesub(name) {
@@ -157,7 +159,9 @@ function switchPagesub(name) {
     document.querySelector('.btn__switch__sub.' + name).classList.add('selected');
     document.querySelector('.request.active').classList.remove('active');
     document.querySelector('.request.' + name).classList.add('active');
-    document.querySelector(".form__outputbd").innerHTML = "";
+    document.querySelector(".form__output").innerHTML = "";
+    document.querySelector(".form__output.red").innerHTML = "";
+    document.querySelector(".form__output.black").innerHTML = "";
 }
 function onRowClick(tableId, callback) {
     var table = document.getElementById(tableId),
@@ -202,11 +206,12 @@ function Bdwork() {
 
 
                 let result = JSON.parse(this.responseText);
+
                 if (result.state == 4) {
-                    document.querySelector(".form__outputbd").innerHTML = result.err;
+                    document.querySelector(".form__output.black").innerHTML = result.err;
                 }
                 if (result.state == 10) {
-                    document.querySelector(".form__outputbd").innerHTML = result.err;
+                    document.querySelector(".form__output").innerHTML = result.err;
                     let html = '<table id="table__req" class="table"><tbody><tr class="title"><td>&nbsp;<span>ID:</span></td><td>&nbsp;<span>Мастер:</span></td><td>&nbsp;<span>Статус:</span></td><td>&nbsp;<span>Ф.И.О:</span></td><td>&nbsp;<span>Номер телефона:</span></td><td>&nbsp;<span>Тип:</span></td><td>&nbsp;<span>Модель:</span></td><td>&nbsp;<span>Проблема:</span></td></tr>';
                     let cnt = 0;
                     for (let i in result.users) {
@@ -222,7 +227,7 @@ function Bdwork() {
                             cnt = 0;
                             html += '</tr>';
                         }
-                        
+
                     }
 
                     html += '</table>';
@@ -242,7 +247,7 @@ function Bdwork() {
                 }
 
                 if (result.state == 11) {
-                    document.querySelector(".form__outputbd").innerHTML = result.err;
+                    document.querySelector(".form__output").innerHTML = result.err;
                     let html = '<table id="table__tech" class="table"><tbody><tr class="title"><td>&nbsp;<span>ID:</span></td><td>&nbsp;<span>type:</span></td><td>&nbsp;<span>model:</span></td><td>&nbsp;<span>text:</span></td><td>&nbsp;<span>img:</span></td><td>&nbsp;<span>price:</span></td></tr>';
                     let cnt = 0;
                     for (let i in result.shop) {
@@ -266,7 +271,7 @@ function Bdwork() {
                     onRowClick("table__tech", function (row) {
                         let value = row.getElementsByTagName("td")[0].innerHTML;
                         if (value != "&nbsp;<span>ID:</span>") {
-                            console.log(value);
+
                             document.querySelector('.content__form.active').classList.remove('active');
                             document.querySelector('.content__form.change_tech').classList.add('active');
                         }
@@ -274,7 +279,7 @@ function Bdwork() {
 
                 }
                 if (result.state == 12) {
-                    document.querySelector(".form__outputbd").innerHTML = result.err;
+                    document.querySelector(".form__output").innerHTML = result.err;
                     let html = '<table id="table__req" class="table"><tbody><tr class="title"><td>&nbsp;<span>ID:</span></td><td>&nbsp;<span>username:</span></td><td>&nbsp;<span>fullname:</span></td><td>&nbsp;<span>usertype:</span></td><td>&nbsp;<span>Номер телефона:</span></td></tr>';
                     let cnt = 0;
                     for (let i in result.users) {
@@ -290,7 +295,7 @@ function Bdwork() {
                             cnt = 0;
                             html += '</tr>';
                         }
-                        
+
                     }
 
                     html += '</table>';
@@ -308,8 +313,37 @@ function Bdwork() {
                     });
 
                 }
+                if (result.state == 13) {
+
+                    let html = '<table id="table__req" class="table"><tbody><tr class="title"><td>&nbsp;<span>Техника:</span></td><td>&nbsp;<span>Проблема:</span></td><td>&nbsp;<span>Статус:</span></td></tr>';
+                    let cnt = 0;
+                    // Object.keys(result.users).length
+                    for (let i in result.users) {
+                        if (cnt == 0) {
+                            html += '<tr href="#' + result.users[i]['id'] + '" >';
+                            cnt++;
+                        }
+                        if (cnt == 1) {
+                            html += '<td>' + result.users[i]['model'] + '</td>' + '<td>' + result.users[i]['issue'] + '</td>' + '<td>' + result.users[i]['status'] + '</td>';
+                            cnt++;
+                        }
+                        if (cnt == 2) {
+                            cnt = 0;
+                            html += '</tr>';
+                        }
+
+                    }
+
+                    html += '</table>';
+
+                    document.querySelector(".form__table.user").innerHTML = html;
+                }
+                if (result.state == 6) {
+                    document.querySelector(".form__table.user").innerHTML = result.err;
+                }
+
                 if (result.state == 2) {
-                    document.querySelector(".form__outputbd").innerHTML = result.err;
+                    document.querySelector(".form__output.red").innerHTML = result.err;
                 }
 
             }
@@ -347,7 +381,7 @@ function changeData(users) {
     html += '<div class="label">Проблема:</div><input class="input__form" type="text" name="issue" placeholder="Проблема*" value="' + users['issue'] + ' " required>';
 
     html += '<input type="hidden" name="do_change_req"><input class="btn" type="submit" value="Submit">';
-    console.log(users);
+
     html += '</form>';
     document.querySelector(".form__table.chng").innerHTML = html;
 }

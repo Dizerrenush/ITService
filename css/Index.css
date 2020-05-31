@@ -6,7 +6,6 @@
     line-height: 20pt;
 }
 
-
 .content__body {
     width: 1100px !important;
     padding: 15px;
@@ -15,8 +14,6 @@
 }
 
 @media (max-width: 1129px) {
-
-
     .content__body {
         padding-left: 20px;
         padding-right: 20px;
@@ -72,10 +69,6 @@
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-
-
-
 .our__contact {
     display: flex;
     justify-content: center;
@@ -98,19 +91,19 @@
     }
 }
 
-.phone__number, .address{
+.phone__number, .address {
     display: flex;
     align-items: center;
     padding: 5%;
 }
 
-.phone__number p, .address p{
-    padding-left:2%;
+.phone__number p, .address p {
+    padding-left: 2%;
     width: 70%;
     font-size: 20pt;
 }
 
-.address p{
+.address p {
     font-size: 15pt;
     line-height: 23pt;
 }
@@ -121,12 +114,12 @@
     padding: 5%;
 }
 
-.social a{
+.social a {
     padding: 1%;
 }
 
-.mail p{
-    padding-left:2%;
+.mail p {
+    padding-left: 2%;
     width: 100%;
     font-size: 20pt;
 }
@@ -156,15 +149,12 @@
     }
 }
 
-.contact_address{
+.contact_address {
     padding: 5% 0;
     padding-right: 3%;
-    
 }
 
-
-.mail__social{
+.mail__social {
     padding: 5% 0;
     padding-right: 3%;
-    
 }

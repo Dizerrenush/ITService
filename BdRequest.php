@@ -23,14 +23,12 @@ if (isset($data['do_request_username'])) {
         //добавляем заявку в БД
 
         $applications = R::dispense('applications');
-        $applications->master = $data['master'];
         $applications->username = $data['username'];
         $applications->fullname = $user['fullname'];
         $applications->phone = $user['phone'];
         $applications->type = $data['type'];
         $applications->model = $data['model'];
         $applications->issue = $data['issue'];
-        $applications->status = $data['status'];
         R::store($applications);
         $result["state"] =  4;
 
@@ -55,7 +53,6 @@ if (isset($data['do_request_nousername'])) {
         $applications->phone = $data['phone'];
         $applications->type = $data['type'];
         $applications->model = $data['model'];
-        $applications->issue = $data['issue'];
         R::store($applications);
         $result["state"] =  4;
 
@@ -204,6 +201,37 @@ if (isset($data['do_show__userlist__num'])) {
     } else {
         $result["state"] =  2;
         $result["err"][] = 'Нет пользователей с таким номером телефона';
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
+}
+
+if (isset($data['do_show__useract'])) {
+    $search = $data['username'];
+
+    $applications = R::findAll('applications', 'username LIKE ?', [$search]);
+    if($applications){
+    $result["state"] =  13;
+    $result["err"][] = 'Весь список';
+    $result["users"] = $applications;
+    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }else{
+        $result["state"] =  6;
+        $result["err"][] = 'У вас на данный момент нет заказов';
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
+}
+
+if (isset($data['do_show__userinact'])) {
+    $search = $data['username'];
+    $applications = R::findAll('applications', 'username LIKE ?AND status LIKE ?', [$search,"Готово"]);
+    if($applications){
+    $result["state"] =  13;
+    $result["err"][] = 'Весь список';
+    $result["users"] = $applications;
+    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }else{
+        $result["state"] =  6;
+        $result["err"][] = 'У вас, на данный момент, нет завершенных заказов';
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     }
 }

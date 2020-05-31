@@ -1,10 +1,6 @@
-<html>
 
-<head>
-    <link rel="stylesheet" href="css/footer.css">
-</head>
+    
 
-<body>
     <footer class="footer">
         <div class="footer__top">
 

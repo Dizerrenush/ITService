@@ -11,6 +11,7 @@ require "db.php";
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/footer.css">
     <script src="js/main.js"></script>
 </head>
 
@@ -35,24 +36,24 @@ require "db.php";
                             <input class="form-styling" type="text" name="username" placeholder="Логин*" required>
                             <input class="form-styling" type="password" name="password" placeholder="Пароль*" required>
                             <input type="hidden" name="do_signin">
-                            <input class="btn-sign" type="submit" value="Submit">
+                            <input class="btn-sign" type="submit" value="Вход">
                         </form>
                     </div>
                     <div class="modal__form signup">
-                        
+
                         <form metod="post" action="Sign.php">
-                            <input class="form-styling" type="text" name="username" placeholder="Логин*" required>
-                            <input class="form-styling" type="text" name="email" placeholder="E-mail">
-                            <input class="form-styling" type="text" name="fullname" placeholder="Ф.И.О*" required>
-                            <input class="form-styling phone" type="text" name="phone" placeholder="+7(___)___-__-__*" required>
+                            <input class="form-styling" type="username" name="username" placeholder="Логин*" required>
+                            <input class="form-styling" type="email" name="email" placeholder="E-mail">
+                            <input class="form-styling" type="fullname" name="fullname" placeholder="Ф.И.О*" required>
+                            <input class="form-styling phone" type="phone" name="phone" placeholder="+7(___)___-__-__*" required>
                             <input class="form-styling" type="password" name="password" placeholder="Пароль*" required>
                             <input class="form-styling" type="password" name="confirmpassword" placeholder="Повторите пароль*" required>
                             <input type="hidden" name="do_signup">
-                            <input class="btn-sign" type="submit" value="Submit">
+                            <input class="btn-sign" type="submit" value="Зарегистрироваться">
                         </form>
                     </div>
                 </div>
-                <div class="form__output">
+                <div class="form__output white">
                 </div>
             </div>
         </div>
@@ -70,8 +71,6 @@ require "db.php";
                 <?php if (isset($_SESSION['logged_user'])) : ?>
                     <?php if ($_SESSION['logged_user']->usertype == "admin" || $_SESSION['logged_user']->usertype == "master") : ?>
                         <a href="Bdwork.php">Страница для работы с БД</a>
-                        <a href="Bdwork.php">Добавить заявку</a>
-
                     <?php endif; ?>
                     <a href="User_page.php">Личный кабинет</a>
                     <a href="SignOut.php">Выход</a>
@@ -89,8 +88,6 @@ require "db.php";
                 <?php if (isset($_SESSION['logged_user'])) : ?>
                     <?php if ($_SESSION['logged_user']->usertype == "admin" || $_SESSION['logged_user']->usertype == "master") : ?>
                         <li><a href="Bdwork.php">Страница для работы с БД</a></li>
-                        <li><a href="Bdwork.php">Добавить заявку</a></li>
-
                     <?php endif; ?>
                     <li><a href="#" style="text-decoration: underline;"><?php echo $_SESSION['logged_user']->fullname; ?></a></li>
                     <li><a href="User_page.php">Личный кабинет</a></li>
@@ -160,6 +157,3 @@ require "db.php";
 
     </header>
 
-</body>
-
-</html>

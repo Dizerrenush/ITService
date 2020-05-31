@@ -1,14 +1,10 @@
+<?php require "includes/db.php"; ?>
+<?php if ($_SESSION['logged_user']->usertype == "admin" || $_SESSION['logged_user']->usertype == "master") : ?>
 <?php include "includes/Header.php"; ?>
-<?php if (isset($_SESSION['logged_user'])) : ?>
-    <?php if ($_SESSION['logged_user']->usertype == "admin" || $_SESSION['logged_user']->usertype == "master") : ?>
-
-    <?php else : ?>
-        <?php header('Location: 404NotFound.php'); ?>
-    <?php endif; ?>
 <?php else : ?>
-    <?php header('Location: 404NotFound.php'); ?>
-
+<?php header('Location: 404NotFound.php'); ?>
 <?php endif; ?>
+
 
 
 <html lang="ru">
@@ -39,14 +35,14 @@
                 <form method="post" action="BdRequest.php">
 
                     <input type="hidden" name="do_show__req">
-                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="submit" value="Весь список">
 
                 </form>
                 <form method="post" action="BdRequest.php">
                     <div class="label">Номер телефона:</div>
                     <input class="input__form" type="text" name="phone" placeholder="Номер телефона*" required>
                     <input type="hidden" name="do_show__req__num">
-                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="submit" value="Поиск">
 
                 </form>
                 <div class="form__table req">
@@ -71,7 +67,7 @@
                         <div class="label">Проблема:</div>
                         <input class="input__form phone" type="text" name="issue" placeholder="Проблема*" required>
                         <input type="hidden" name="do_request_username">
-                        <input class="btn" type="submit" value="Submit">
+                        <input class="btn" type="submit" value="Добавить">
 
                     </form>
                 </div>
@@ -88,7 +84,7 @@
                         <div class="label">Проблема:</div>
                         <input class="input__form" type="text" name="issue" placeholder="Проблема*" required>
                         <input type="hidden" name="do_request_nousername">
-                        <input class="btn" type="submit" value="Submit">
+                        <input class="btn" type="submit" value="Добавить">
 
                     </form>
                 </div>
@@ -97,7 +93,7 @@
                 <form method="post" action="BdRequest.php">
 
                     <input type="hidden" name="do_show__tech">
-                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="submit" value="Получить список">
 
                 </form>
                 <div class="form__table tech">
@@ -119,7 +115,7 @@
                     <input class="input__form" name="picture" type="file" /> -->
 
                     <input type="hidden" name="do_add__tech">
-                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="submit" value="Добавить">
 
                 </form>
 
@@ -150,7 +146,7 @@
                     <div class="label">Модель:</div>
 
                     <input type="hidden" name="do_change_tech">
-                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="submit" value="Показать пользователей">
 
                 </form> -->
 
@@ -160,15 +156,18 @@
                     <div class="label">Номер телефона:</div>
                     <input class="input__form" type="text" name="phone" placeholder="Номер телефона*" required>
                     <input type="hidden" name="do_show__userlist__num">
-                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="submit" value="Показать пользователей">
 
                 </form>
                 <div class="form__table user">
 
                 </div>
-                <div class="form__outputbd">
+            </div>
+            <div class="form__output black">
 
-                </div>
+            </div>
+            <div class="form__output red">
+
             </div>
         </div>
         <?php include "includes/Footer.php"; ?>

@@ -42,7 +42,7 @@
 
 
     <div class="our__contact">
-    <a name="our__contact"></a>
+        <a name="our__contact"></a>
         <h1>Наши контакты</h1>
     </div>
     <div class="contacts">

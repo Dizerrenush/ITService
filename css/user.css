@@ -1,4 +1,3 @@
-
 .content__body {
     width: 1100px !important;
     padding: 15px;
@@ -7,8 +6,6 @@
 }
 
 @media (max-width: 1129px) {
-
-
     .content__body {
         padding-left: 20px;
         padding-right: 20px;
@@ -22,4 +19,136 @@
         padding-left: 15px;
         padding-right: 15px;
     }
+}
+
+.nav ul{
+    display: flex;
+}
+.nav ul li {
+    background: #f8f8f8;
+    border-right: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+    font-size: 14px;
+    margin-right: 0;
+    padding: .2em .7em .3em;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav ul li input {
+    cursor: pointer;
+    border: none;
+    background: white;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 12pt;
+}
+
+.nav ul li.selected {
+    color: #fff;
+    background: #023e7f;
+}
+
+.nav ul li.selected input {
+    color: #fff;
+    background: #023e7f;
+}
+
+.nav ul li:hover input {
+    color: #fff;
+    background: #023e7f;
+    transition-duration: 0.5s;
+}
+
+.nav ul li:hover {
+    background: #023e7f;
+    transition-duration: 0.5s;
+}
+
+.input__form {
+    width: 50%;
+    height: 35px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.user__page {
+    display: flex;
+    flex-direction: column;
+}
+
+.user__page form {
+    display: contents;
+}
+
+.btn {
+    cursor: pointer;
+    padding-top: 8px;
+    width: 10%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #023e7f;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 5%;
+}
+
+.btn_2 {
+    cursor: pointer;
+    padding-top: 8px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #023e7f;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 1%;
+    width: 35%;
+}
+
+.label {
+    font-size: 15pt;
+    padding-bottom: 1%;
+    padding-top: 2%;
+    display: block;
+}
+
+/* ТАБЛИЦЫ  */
+
+.title {
+    background-color: #dbdbdb;
+}
+
+.table td {
+    border: 1px solid #808080;
+    padding: 3px 5px;
+}
+
+.table tr:hover {
+    background-color: #023e7f;
+    cursor: pointer;
+}
+
+.table tr:hover td {
+    color: white;
+}
+
+.title span {
+    font-weight: bold;
+}
+
+.table td {
+    border: 1px solid #808080;
+    padding: 3px 5px;
 }
